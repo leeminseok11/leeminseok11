@@ -23,14 +23,25 @@
 
 | 분야 | 기술 |
 |:--|:--|
-| **Language** | <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/> <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/> |
-| **Web** | <img src="https://img.shields.io/badge/Django%20REST-092E20?style=flat-square&logo=django&logoColor=white"/> <img src="https://img.shields.io/badge/Vue%203-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white"/> |
+| **Language** | <img src="https://img.shields.io/badge/Java%2021-ED8B00?style=flat-square"/> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/> <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"/> |
+| **Web** | <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Django%20REST-092E20?style=flat-square&logo=django&logoColor=white"/> <img src="https://img.shields.io/badge/Vue%203-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white"/> |
 | **AI · Embedded** | <img src="https://img.shields.io/badge/YOLO-111F68?style=flat-square&logo=ultralytics&logoColor=white"/> <img src="https://img.shields.io/badge/ONNX-005CED?style=flat-square&logo=onnx&logoColor=white"/> <img src="https://img.shields.io/badge/TensorRT-76B900?style=flat-square&logo=nvidia&logoColor=white"/> <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white"/> <img src="https://img.shields.io/badge/Jetson%20Orin%20Nano-76B900?style=flat-square&logo=nvidia&logoColor=white"/> <img src="https://img.shields.io/badge/Arduino-00878F?style=flat-square&logo=arduino&logoColor=white"/> |
 | **Infra · DevOps** | <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white"/> <img src="https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"/> <img src="https://img.shields.io/badge/AWS%20EC2-FF9900?style=flat-square"/> <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white"/> <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"/> <img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white"/> <img src="https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white"/> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"/> |
 
 <br/>
 
 ### Projects
+
+#### LLM BATTLE · LLM 캐릭터 생성·실시간 대전 게임
+`2026.10 – 2026.11` `6인 팀` `BE-B · 전투 백엔드`
+
+> 사진과 설명으로 캐릭터를 만들고 4인 덱으로 대전하는 게임입니다. 전투 엔진, 실시간 PvP, 즉흥 기술 연동과 검증을 맡았습니다.
+
+- **전투 서버** — Java 21 · Spring Boot로 데미지·상성·상태·교체 규칙과 AI전 API 구현. 시드 난수(SplitMix64)와 상태·행동 기록으로 전투 재현
+- **실시간 PvP · AI 연동** — WebSocket 인증·레이팅 매칭·턴 동시 공개·시간 초과·기권 처리. LLM 즉흥 기술 미리보기와 확정을 전투 규칙에 연결
+- **동시성 · 정합성** — Redis SET NX·Lua로 중복 전투 생성과 미리보기 횟수를 제어하고, 저장 시 락 소유권 확인·모드별 종료 재시도·멱등 응답으로 실패 경로 보강
+- **운영 부하 검증** — k6 68 VU · 15분 측정에서 턴 API p95 73ms(목표 150ms). 테스트 계정 충돌을 고쳐 재측정한 PvP 소켓 322개 · 161경기의 오류 카운터 0, 종료 미반영 0 확인
+- **밸런스 검증** — 조건별 500판 시뮬레이션으로 레벨 성장률과 속도 반영을 조정해, 같은 덱의 레벨 10 차이 승률을 68.6% → 54.4%(starter), 68.4% → 56.2%(mixed)로 조정
 
 #### SOBI · 소상공인 정책자금 플랫폼
 `2026.08 – 2026.09` `6인 팀` `인프라·DevOps 단독` `자격 판정 고도화`
